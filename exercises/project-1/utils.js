@@ -101,7 +101,7 @@ export const drawFaceBox = (photo, faces) => {
     faces[0].box.xMin,
     faces[0].box.yMin,
     faces[0].box.width,
-    faces[0].box.height
+    faces[0].box.height,
   );
 
   const webcamSection = document.getElementById("webcam-section");
