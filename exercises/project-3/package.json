@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tensorflow/tfjs": "^4.17.0",
-    "@tensorflow/tfjs-node": "^4.17.0",
-    "@tensorflow/tfjs-node-gpu": "^4.17.0",
+    "@tensorflow/tfjs": "^4.20.0",
+    "@tensorflow/tfjs-node": "^4.20.0",
+    "@tensorflow/tfjs-node-gpu": "^4.20.0",
     "parcel": "2.11.0"
   },
   "overrides": {
