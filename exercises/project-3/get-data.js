@@ -1,6 +1,6 @@
 const tf = require("@tensorflow/tfjs-node-gpu");
 const fs = require("fs");
-const path = require("Path");
+const path = require("path");
 
 const trainImagesDir = "./data/train";
 const testImagesDir = "./data/test";
@@ -16,7 +16,6 @@ const loadImages = (dataDir) => {
     let filePath = path.join(dataDir, files[i]);
 
     let buffer = fs.readFileSync(filePath);
-    // console.log(buffer);
     let imageTensor = tf.node
       .decodeImage(buffer)
       .resizeNearestNeighbor([28, 28])
@@ -24,8 +23,8 @@ const loadImages = (dataDir) => {
 
     images.push(imageTensor);
 
-    const circle = files[i].toLowerCase().endsWith("circle.png");
-    const triangle = files[i].toLowerCase().endsWith("triangle.png");
+    const circle = files[i].toLocaleLowerCase().endsWith("circle.png");
+    const triangle = files[i].toLocaleLowerCase().endsWith("triangle.png");
 
     if (circle === true) {
       labels.push(0);
@@ -38,7 +37,7 @@ const loadImages = (dataDir) => {
 };
 
 const loadData = () => {
-  console.log("Loading images....");
+  console.log("Loading images...");
   trainData = loadImages(trainImagesDir);
   testData = loadImages(testImagesDir);
   console.log("Images loaded successfully");
@@ -46,14 +45,14 @@ const loadData = () => {
 
 const getTrainData = () => {
   return {
-    images: tf.concat(trainData),
+    images: tf.concat(trainData[0]),
     labels: tf.oneHot(tf.tensor1d(trainData[1], "int32"), 2),
   };
 };
 
 const getTestData = () => {
   return {
-    images: tf.concat(testData),
+    images: tf.concat(testData[0]),
     labels: tf.oneHot(tf.tensor1d(testData[1], "int32"), 2),
   };
 };
